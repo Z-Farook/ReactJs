@@ -1,8 +1,15 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import React from "react";
+import App from "./App";
+import { shallow } from "enzyme";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+let component;
+
+beforeEach(() => {
+  component = shallow(<App />);
+});
+
+it("renders without crashing", () => {
+  expect(component.text()).toEqual(
+    "Welcome to React Bookstore<ProductList /><Cart />"
+  );
 });
