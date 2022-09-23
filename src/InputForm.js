@@ -32,7 +32,9 @@ class InputForm extends Component {
                 <input value={this.props.userInput.dueDate}
                     id="dueDate"
                     type="date"
-                    onChange={handleDateChange} /><button onClick={handleClick}>Add Item</button>
+                    onChange={handleDateChange} />
+
+                <button onClick={handleClick}>Add Item</button>
             </form>
         );
     }

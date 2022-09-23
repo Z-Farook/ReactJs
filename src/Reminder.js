@@ -1,20 +1,35 @@
+import { Component } from 'react';
 import PropTypes from "prop-types";
+class Reminder extends Component {
 
-function Reminder(props) {
-    function handleChange() {
-        props.setIsComplete(!props.isComplete, props.id);
+    /**
+     * js object notation syntax for  method definition 
+     * Note it is defined outside the class render method 
+     * If you use this you will have to call it like this in the input onChange event:
+     * ########     onChange={this.handleDateChange.bind(this)}   ########
+     *    handleChange() {
+          this.props.setIsComplete(!this.props.isComplete, this.props.id);
+      } */
+
+    render() {
+        
+        const handleChange = () => {
+            this.props.setIsComplete(!this.props.isComplete, this.props.id);
+        }
+
+        return (
+            <div>
+                item: {this.props.reminderText}&nbsp;due date: {this.props.dueDate}
+                &nbsp;Completed?:{" "}
+                <input
+                    type="checkbox"
+                    checked={this.props.isComplete}
+
+                    onChange={handleChange}
+                />
+            </div>
+        );
     }
-    return (
-        <div>
-            item: {props.reminderText}&nbsp;due date: {props.dueDate}
-            &nbsp;Completed?:{" "}
-            <input
-                type="checkbox"
-                checked={props.isComplete}
-                onChange={handleChange}
-            />
-        </div>
-    );
 }
 
 Reminder.propTypes = {
